@@ -57,13 +57,13 @@ export default function AdminLayout({
       return;
     }
 
-    if (session.user?.role !== "admin") {
+    if ((session.user as any)?.role !== "admin") {
       router.push("/");
       return;
     }
   }, [session, status, router]);
 
-  if (status === "loading" || !session || session.user?.role !== "admin") {
+  if (status === "loading" || !session || (session.user as any)?.role !== "admin") {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
